@@ -1,6 +1,6 @@
 {
-  "name": "front-project",
-  "version": "0.0.0",
+  "name": "images-opening",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,6 +11,7 @@
     "vite": "^2.1.5"
   },
   "dependencies": {
-    "gsap": "^3.6.1"
+    "gsap": "^3.6.1",
+    "splitting": "^1.0.6"
   }
 }

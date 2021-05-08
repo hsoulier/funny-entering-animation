@@ -1,0 +1,64 @@
+.cursor {
+	&__inner,
+	&__outer {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translate3d(-50%, -50%, 0);
+	}
+	&__inner {
+		width: 0.5rem;
+		height: 0.5rem;
+		background-color: var(--clr-black);
+		border-radius: 999px;
+		z-index: 999;
+	}
+	&__outer {
+		width: 3.5rem;
+		height: 3.5rem;
+		border: 1px solid var(--clr-black);
+		border-radius: 999px;
+		z-index: 999;
+	}
+}
+
+.loader {
+	body.is-loaded & {
+		opacity: 0;
+		pointer-events: none;
+	}
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: calc(100 * var(--vh, 1vh));
+	width: 100vw;
+	background-color: var(--clr-secondary);
+	z-index: 999;
+	transition: opacity 1s var(--ease);
+	&--inner {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		font-size: 5rem;
+		.dot {
+			transform: translateY(10%);
+			display: inline-block;
+			animation: updAndDown 0.5s alternate infinite var(--ease);
+			@for $i from 1 to 4 {
+				&:nth-child(#{$i}) {
+					animation-delay: calc(#{$i} * 0.2s);
+				}
+			}
+		}
+	}
+}
+
+@keyframes updAndDown {
+	from {
+		transform: translateY(10%) scale(1.25);
+	}
+	to {
+		transform: translateY(0) scale(1);
+	}
+}

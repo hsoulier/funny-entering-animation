@@ -1,43 +1,122 @@
 @import "./base/variable", "./base/reset";
+@import "./utils";
 
 body {
 	cursor: none;
 }
-.cursor {
-	&__inner,
-	&__outer {
+
+#app {
+	position: relative;
+	display: grid;
+	grid-template: 1fr / 1fr;
+	height: calc(100 * var(--vh));
+	width: 100%;
+	place-items: center;
+	h1 {
+		color: var(--clr-white);
+		white-space: nowrap;
+		width: max(50vw, 40rem);
+		display: flex;
+		flex-direction: column;
+		font-weight: 900;
+		justify-content: center;
+		font-size: max(8vw, 6rem);
+		height: calc(70 * var(--vh, 1vh));
+		$aligns: (0, "20%", "40%");
+		@each $align in $aligns {
+			$i: index($aligns, $align);
+			span[data-splitting]:nth-child(#{$i}) {
+				line-height: 1.2;
+				background-color: var(--clr-black);
+				overflow: hidden;
+				margin-top: 2rem;
+				padding-left: 1rem;
+				display: inline-block;
+				margin-left: #{$align};
+			}
+		}
+	}
+	.img-wrapper {
 		position: absolute;
-		top: 0;
-		left: 0;
-		transform: translate3d(-50%, -50%, 0);
-	}
-	&__inner {
-		width: 1rem;
-		height: 1rem;
-		background-color: var(--clr-black);
-		border-radius: 999px;
-		z-index: 999;
-	}
-	&__outer {
-		width: 5rem;
-		height: 5rem;
-		border: 1px solid var(--clr-black);
-		border-radius: 999px;
-		z-index: 999;
+		z-index: -1;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		height: calc(80 * var(--vh, 1vh));
+		width: calc(80 * var(--vh, 1vh));
+		overflow: hidden;
+		img {
+			object-fit: contain;
+			width: 100%;
+			height: 100%;
+		}
+		&.img-2 {
+			top: calc(50% + 25 * var(--vh, 1vh));
+			left: calc(50% - 20vw);
+			height: calc(40 * var(--vh, 1vh));
+			width: calc(40 * var(--vh, 1vh));
+		}
+		&.img-3 {
+			transform: translateX(-50%);
+			top: calc(50% - 45 * var(--vh, 1vh));
+			left: calc(50% + 20vw);
+			height: calc(40 * var(--vh, 1vh));
+			width: calc(40 * var(--vh, 1vh));
+		}
 	}
 }
 
-#app {
-	display: grid;
-	height: calc(100 * var(--vh));
-	width: 100%;
-	place-content: center;
-	h1 {
-		text-align: center;
-		width: 70%;
-		margin-left: auto;
-		margin-right: auto;
-		font-size: 5vw;
-		font-weight: 700;
+.opening {
+	&__container {
+		height: calc(100 * var(--vh, 1vh));
+		width: 100vw;
+		position: fixed;
+		top: 0;
+	}
+	&__img-wrapper {
+		z-index: 999;
+		position: absolute;
+		width: 25vw;
+		height: calc(60 * var(--vh, 1vh));
+		img {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
+		$positions: (
+			1: (
+				"left": 10vw,
+				"opacity": 0.8,
+				"transform": 0%,
+			),
+			2: (
+				"left": 72vw,
+				"opacity": 1,
+				"transform": 10%,
+			),
+			3: (
+				"left": 50vw,
+				"opacity": 0.5,
+				"transform": -5%,
+			),
+			4: (
+				"left": 30vw,
+				"opacity": 0.9,
+				"transform": 5%,
+			),
+			5: (
+				"left": 2vw,
+				"opacity": 0.85,
+				"transform": -8%,
+			),
+		);
+		@each $img, $values in $positions {
+			&:nth-child(#{$img}) {
+				top: 100%;
+				left: map-get($values, "left");
+				opacity: 1;
+				transform: transform3d(0, map-get($values, "transform"), 0);
+			}
+		}
 	}
 }
