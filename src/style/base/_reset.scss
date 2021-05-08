@@ -3,6 +3,10 @@
    License: none (public domain)
 */
 
+* {
+	box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -130,4 +134,7 @@ body {
 	font: 16px / 1.5 var(--font-sans);
 	background-color: var(--clr-white);
 	color: var(--clr-black);
+	&.is-loading {
+		overflow: hidden;
+	}
 }

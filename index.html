@@ -5,11 +5,11 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script type="module" src="/src/index.js"></script>
+		<script type="module" src="/src/js/index.js"></script>
 		<title>Vite App</title>
 	</head>
 
-	<body class="is-loading">
+	<body data-scroll-container class="is-loading">
 		<div class="loader">
 			<div class="loader--inner">
 				<span class="dot">.</span>
@@ -17,7 +17,6 @@
 				<span class="dot">.</span>
 			</div>
 		</div>
-
 		<div class="opening">
 			<div class="opening__container">
 				<div class="opening__img-wrapper">
@@ -37,14 +36,19 @@
 				</div>
 			</div>
 		</div>
-		<div id="app">
+
+		<!-- CONTENT -->
+		<section data-scroll-section class="home">
 			<h1>
-				<span data-splitting>Architecture</span>
-				<span data-splitting>Simple</span>
-				<span data-splitting>Brutal</span>
+				<span data-scroll data-scroll-speed="1" data-scroll-direction="horizontal"
+					data-splitting>Architecture</span>
+				<span data-scroll data-scroll-speed="2" data-scroll-direction="horizontal" data-splitting>Simple</span>
+				<span data-scroll data-scroll-speed="3" data-scroll-direction="horizontal" data-splitting>Brutal</span>
 			</h1>
 			<div class="img-wrapper img-1">
-				<img src="/assets/img/img2.jpg" alt="Image">
+				<div data-scroll data-scroll-speed="2" class="img-inner">
+					<img src="/assets/img/img2.jpg" alt="Image">
+				</div>
 			</div>
 			<div class="img-wrapper img-2">
 				<img src="/assets/img/img5.jpg" alt="Image">
@@ -52,7 +56,28 @@
 			<div class="img-wrapper img-3">
 				<img src="/assets/img/img3.jpg" alt="Image">
 			</div>
-		</div>
+		</section>
+		<section data-scroll-section class="about" id="about-section">
+			<div class="about__container">
+				<h2 data-scroll data-scroll-sticky data-scroll-target="#about-section">About us</h2>
+				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa ex, atque delectus vero
+					recusandae possimus, esse ipsa necessitatibus nihil voluptates quia minima quam, molestias
+					architecto enim. Laborum est molestias sunt perferendis quas inventore voluptate tempore
+					omnis
+					velit, itaque quaerat iusto doloribus eveniet quisquam animi nemo rerum nihil aliquam ipsam?
+					Cum
+					doloribus velit animi vero optio, eaque alias dolorem iste dignissimos laboriosam accusamus
+					quos
+					ea pariatur ex perspiciatis error, officia quisquam modi tempora. Nam, odit! Non in odit
+					quas,
+					porro ducimus similique! Quidem, voluptatibus? Iusto magnam eius, excepturi voluptate error
+					ex
+					nihil praesentium voluptatum, temporibus sed accusamus voluptatem, consequatur eveniet
+					possimus?
+				</p>
+			</div>
+		</section>
+		<!-- END CONTENT -->
 
 		<div class="cursor__inner"></div>
 		<div class="cursor__outer"></div>

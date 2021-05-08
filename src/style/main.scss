@@ -4,18 +4,18 @@
 body {
 	cursor: none;
 }
-
-#app {
+.home {
 	position: relative;
 	display: grid;
 	grid-template: 1fr / 1fr;
 	height: calc(100 * var(--vh));
+	min-height: 700px;
 	width: 100%;
 	place-items: center;
 	h1 {
 		color: var(--clr-white);
 		white-space: nowrap;
-		width: max(50vw, 40rem);
+		// width: max(50vw, 40rem);
 		display: flex;
 		flex-direction: column;
 		font-weight: 900;
@@ -27,12 +27,14 @@ body {
 			$i: index($aligns, $align);
 			span[data-splitting]:nth-child(#{$i}) {
 				line-height: 1.2;
-				background-color: var(--clr-black);
 				overflow: hidden;
 				margin-top: 2rem;
-				padding-left: 1rem;
 				display: inline-block;
 				margin-left: #{$align};
+				.word {
+					background-color: var(--clr-black);
+					padding: 0 1rem;
+				}
 			}
 		}
 	}
@@ -45,6 +47,9 @@ body {
 		height: calc(80 * var(--vh, 1vh));
 		width: calc(80 * var(--vh, 1vh));
 		overflow: hidden;
+		.img-inner {
+			overflow: hidden;
+		}
 		img {
 			object-fit: contain;
 			width: 100%;
@@ -63,6 +68,28 @@ body {
 			height: calc(40 * var(--vh, 1vh));
 			width: calc(40 * var(--vh, 1vh));
 		}
+	}
+}
+
+.about {
+	&__container {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		width: 80%;
+		margin-top: 4rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	h2 {
+		flex-shrink: 0;
+		margin-right: 4rem;
+		font-size: max(3rem, 6vw);
+		font-weight: 900;
+	}
+	p {
+		font-size: 1.25rem;
+		margin-bottom: 5rem;
 	}
 }
 
