@@ -1,11 +1,7 @@
 import { gsap } from "gsap"
 
 export const opening = (DOM) => {
-	const tl = gsap.timeline({
-		onComplete: () => {
-			DOM.body.style.oveflow = "auto"
-		},
-	})
+	const tl = gsap.timeline()
 	tl.to(DOM.loadImg, {
 		y: "-95vh",
 		stagger: 0.3,
@@ -38,7 +34,7 @@ export const opening = (DOM) => {
 		.to(
 			DOM.spansTitle,
 			{
-				width: "auto",
+				width: "100%",
 			},
 			"+=.2"
 		)
@@ -66,6 +62,9 @@ export const opening = (DOM) => {
 				y: 0,
 				stagger: 0.3,
 				duration: 0.8,
+				onComplete: () => {
+					document.body.style.overflowY = "auto"
+				},
 			},
 			"-=1.4"
 		)

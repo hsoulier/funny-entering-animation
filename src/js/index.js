@@ -46,6 +46,25 @@ class App {
 	}
 }
 
+const loadImgs = () => {
+	const imgs = document.querySelectorAll("img")
+	let imagesIndex = 0
+	;[...imgs].forEach((element) => {
+		const image = new Image()
+		image.src = element.src
+		image.onload = (_) => {
+			imagesIndex += 1
+			if (imagesIndex === imgs.length) {
+				const app = new App()
+			} else {
+				console.log(
+					`Need to load ${imgs.length - imagesIndex} more images`
+				)
+			}
+		}
+	})
+}
+
 window.addEventListener("DOMContentLoaded", () => {
-	const app = new App()
+	loadImgs()
 })

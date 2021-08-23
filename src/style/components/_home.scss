@@ -1,0 +1,76 @@
+.home {
+	position: relative;
+	display: grid;
+	grid-template: 1fr / 1fr;
+	height: calc(100 * var(--vh));
+	min-height: 700px;
+	width: 100%;
+	place-items: center;
+	h1 {
+		color: var(--clr-white);
+		white-space: nowrap;
+		// width: max(50vw, 40rem);
+		display: flex;
+		flex-direction: column;
+		font-weight: 900;
+		justify-content: center;
+		font-size: clamp(2rem, 12vw, 6rem);
+		height: calc(70 * var(--vh, 1vh));
+		min-height: 500px;
+		$aligns: (0, "20%", "40%");
+		@each $align in $aligns {
+			$i: index($aligns, $align);
+			span[data-splitting]:nth-child(#{$i}) {
+				line-height: 1.2;
+				overflow: hidden;
+				margin-top: 2rem;
+				display: inline-block;
+				margin-left: #{$align};
+				.word {
+					background-color: var(--clr-black);
+					padding: 0 1rem;
+				}
+			}
+		}
+	}
+	.img-wrapper {
+		position: absolute;
+		z-index: -1;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		height: calc(90 * 1vmin);
+		width: calc(90 * 1vmin);
+		overflow: hidden;
+		.img-inner {
+			overflow: hidden;
+		}
+		img {
+			object-fit: contain;
+			width: 100%;
+			height: 100%;
+		}
+		&.img-2 {
+			top: calc(50% + 25 * 1.15vmin);
+			left: calc(50% - 20vw);
+		}
+		&.img-3 {
+			transform: translateX(-50%);
+			top: calc(50% - 45 * 1vmin);
+			left: calc(50% + 20vw);
+		}
+
+		&.img-2,
+		&.img-3 {
+			height: calc(50 * 1vmin);
+			width: calc(50 * 1vmin);
+		}
+		@media screen and (min-width: 768px) {
+			&.img-2,
+			&.img-3 {
+				height: calc(40 * 1vmin);
+				width: calc(40 * 1vmin);
+			}
+		}
+	}
+}
